@@ -1,0 +1,35 @@
+% Papierformat
+\documentclass[a4paper, 12pt]{article}
+
+\input{DA-INCLUDES/da-packages.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Beginn des tatsächlichen Dokuments 
+
+% Referenz-Liste(n) der zu zitierenden Litatur
+\addbibresource{references.bib}
+
+% Start des eigentlich Dokuments
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%1%%%%%%
+%%% Inkludieren aller nötigen Variablen
+	\input{DA-INCLUDES/da-defines.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 1.0 INTRO
+	\input{da-1_intro.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 2.0 Das Hauptdokument
+	\input{da-2_main.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 3.0 Der Abspann
+	\input{da-3_outro.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 4.0 Der Anhang
+	\input{da-4_appendix.tex}
+
+\end{document}

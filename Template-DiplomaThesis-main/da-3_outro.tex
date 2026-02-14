@@ -1,0 +1,37 @@
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\doubleOrSinglePaged
+
+\setstretch{1}
+
+\begin{flushleft}
+	\ifthenelse{\boolean{isEnglish}}{
+		\section{Bibliography} }{
+		\section{Literaturverzeichnis}
+		}
+	\renewcommand{\headrulewidth}{0.4pt}
+	{\def\section*#1{}\printbibliography}
+	
+\end{flushleft}
+\newpage
+
+\ifthenelse{\boolean{isEnglish}}{
+	\section{List of Figures}}{
+	\section{Abbildungsverzeichnis}
+}
+
+
+{\def\section*#1{}\listoffigures}
+\pagebreak
+
+\ifthenelse{\boolean{isEnglish}}{
+	\section{List of Tables} }{
+	\section{Tabellenverzeichnis}
+}
+
+{\def\section*#1{}\listoftables}
+\pagebreak
+
+\input{da-3.1_abbreviation.tex}
+\newpage

@@ -1,0 +1,26 @@
+% Kopf- und Fußzeile für Hauptteil definieren
+
+\renewcommand{\headrulewidth}{0.4pt}
+\doubleOrSinglePaged
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Hauptteil
+% Inhaltsverzeichnis anzeigen
+\tableofcontents
+
+% 1,5-facher Zeilenabstand für Textteil
+\setstretch{1.5}  %SH_220306 von 1.4 auf 1.5
+%\doublespacing
+\clearpage
+\pagebreak
+
+\clearpage
+\pagenumbering{arabic} %SH_220306 verschoben nach Inhaltsverzeichnis
+
+\input{SH/common_things.tex}
+\input{SC/01.tex}
+\input{SC/02.tex}
+\input{VA/02.tex}
+\input{SH/01.tex}
+
+\newpage

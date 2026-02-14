@@ -1,0 +1,176 @@
+% Deutsche Silbentrennung
+\usepackage[ngerman]{babel}
+% Deutsche Umlaute
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Höhe der Kopf- und Fußzeile definieren
+\usepackage{geometry}
+\geometry{verbose,a4paper,tmargin=25mm,bmargin=25mm,lmargin=25mm,rmargin=25mm, headsep=0.5cm}
+% Weitere Packages
+\usepackage[titletoc]{appendix}
+\usepackage{csquotes}
+\usepackage{blindtext}
+\usepackage{setspace} 
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{ifthen}
+\usepackage[]{ragged2e}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{xcolor,colortbl}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\setlength\parindent{0pt}
+\usepackage[font={footnotesize}]{caption}
+% imports für tabellen
+\usepackage{longtable}
+\usepackage{multirow}
+
+% SI-Einheiten
+\usepackage{siunitx}
+\sisetup{locale = DE,per-mode=fraction}
+
+% Literaturvereichnis / Zitate
+\usepackage[
+    backend=biber,
+    style=apa,     %apa or numeric
+    autocite=inline]{biblatex}
+    
+% deutsche Anfuehrungszeichen 
+\newcommand{\anf}[1]{\glqq #1\grqq{}} %SH_220105 eingefügt
+
+% Links im Inhaltsverzeichnis
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% Schriftart einbinden
+\usepackage{sourcesanspro} % roman is default font
+\usepackage{courier} % used for \code{arg1}  \inlinecode
+
+% Inhaltsverzeichnis umbennen
+\addto\captionsenglish{
+  \renewcommand{\contentsname}
+    {Inhaltsverzeichnis}
+}
+\addto\captionsngerman{
+  \renewcommand{\contentsname}
+    {Inhaltsverzeichnis}
+}
+
+% Literaturverzeichnis
+%\usepackage[numbers]{natbib} 
+
+% Caption-Abkürzungen
+\addto\captionsenglish{\renewcommand{\figurename}{Abb.}}
+\addto\captionsngerman{\renewcommand{\figurename}{Abb.}}
+
+% Fußnote
+\usepackage[bottom]{footmisc}
+
+\include{DA-INCLUDES/da-syntaxHighlighting.tex}
+
+% Bilder floaten
+\usepackage{float}
+\usepackage{wrapfig}
+\newfloat{listing}{H}{loc}
+\floatname{listing}{Listing}
+
+% Zeilenumbruch in Tabelle
+\usepackage{makecell}
+
+% Blocksatz
+\usepackage{microtype}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{0.7em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\pagestyle{fancy}
+
+% Schriftart festlegen
+\renewcommand{\familydefault}{\rmdefault}  % Serifenschrift
+%\renewcommand{\familydefault}{\sfdefault}  % Serifenlose Schrift
+
+% Text in Kopfzeile für Vorwort festlegen
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+% Fußzeilenlinie definieren
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Autor-Kommando definieren
+\newcommand{\TheAuthor}{}
+\newcommand{\Author}[1]{\renewcommand{\TheAuthor}{#1}}
+
+% Zellenhöhe für Tabelle
+\renewcommand{\arraystretch}{1.3}
+
+% Inline-Code
+\newcommand{\inlinecode}{\texttt}
+\let\oldtexttt\texttt
+\newcommand{\code}[1]{\colorbox{lightgray!25}{\oldtexttt{#1}}} 
+\renewcommand{\texttt}{\code}
+
+\newenvironment{longcite}
+{
+ 	\begin{quote}
+ 		\small
+		\itshape
+			}
+			{	
+	\end{quote}
+}
+
+\usepackage{ifthen}
+\newboolean{isInformatik} % declaration
+\newboolean{isEnglish} % declaration
+\newboolean{isDoublePagePrinting} % declaration
+\newboolean{isSansSerif} % declaration
+
+\newcommand*{\inputLanguageText}[1]{
+	\ifthenelse{\boolean{isEnglish}}{
+		\input{DA-INCLUDES/EN/#1}
+	}{
+		\input{DA-INCLUDES/DE/#1}	
+	}
+}
+
+\newcommand*{\inputDepartmentTitlePage}[1]{
+	\ifthenelse{\boolean{isEnglish}}{
+		\input{#1/da-1.0_titlePage-en.tex} }{
+		\input{#1/da-1.0_titlePage-de.tex}	
+	}
+}
+
+\newcommand*{\doubleOrSinglePaged}{
+	\ifthenelse{\boolean{isDoublePagePrinting}}{
+		\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{}{\rightmark}}
+		\fancyhead[R]{\ifthenelse{\isodd{\value{page}}}{\rightmark}{}}
+		\cfoot{}
+		\fancyfoot[L]{\ifthenelse{\isodd{\value{page}}}{\TheAuthor}{\thepage}}
+		\fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{\thepage}{\TheAuthor}}
+	}{
+		% ********* begin einseitiger Druck *********** SH_220305
+		\fancyhead[R]{\rightmark}
+		\cfoot{\daTitle}
+		\fancyfoot[R]{\thepage}
+		\fancyfoot[L]{\TheAuthor}
+	}
+}
+
+\newcommand*{\SerifOrSans}[1]{
+	\ifthenelse{\boolean{isSansSerif}}{
+		\renewcommand{\familydefault}{\sfdefault}
+		\sffamily}{
+		\renewcommand{\familydefault}{\rmdefault}
+		\rmfamily
+	}
+}

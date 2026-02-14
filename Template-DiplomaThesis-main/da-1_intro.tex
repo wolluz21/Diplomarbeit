@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Titelseite
+
+\SerifOrSans{isSansSerif}
+\inputDepartmentTitlePage{\department}
+
+
+% Kopf- und Fußzeile für Vorwort definieren
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\cfoot{\daTitle}
+
+\ifthenelse{\boolean{isDoublePagePrinting}}{
+	\fancyfoot[L]{\ifthenelse{\isodd{\value{page}}}{\thepage}{}}
+	\fancyfoot[R]{\ifthenelse{\isodd{\value{page}}}{}{\thepage}}
+}{
+	\fancyfoot[R]{\thepage}
+}
+
+\begin{justify}
+	\pagenumbering{roman}
+	\input{da-1.1_legalDeclaration.tex}
+	\pagebreak
+	\input{da-1.2_statutoryDeclaration.tex}
+	\pagebreak
+	\ifthenelse{\boolean{isEnglish}}{
+		\input{da-1.3_abstract-en.tex} }{
+		\input{da-1.3_abstract-de.tex}
+	}
+	\pagebreak
+	\ifthenelse{\boolean{isEnglish}}{
+		\input{da-1.5_thanksGiving-en.tex} }{
+		\input{da-1.5_thanksGiving-de.tex}
+	}
+	\pagebreak
+\end{justify}

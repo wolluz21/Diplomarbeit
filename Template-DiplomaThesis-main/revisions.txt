@@ -1,0 +1,37 @@
+20220105 SH
+Titelseite: Leerzeile nach Themeneintrag
+\anf für deutsche Anführungszeichen hinzu
+Titelseite für AUT erstellt
+Literaturverzeichnis: {\def\section*#1{}\printbibliography} %Literaturverzeichnis ohne zusätzlicher Überschrift "Literatur"
+references.bib um mit JabRef automatisch erstellten Website-Eintrag ergänzt (browser:brave, Erweiterung: für Crome)
+Zusätzliche subsection "Fortsetzung" mit weiteren Zitierbeispielen erstellt
+**************
+20220106 SH
+Logos überarbeitet (Vectorgrafiken)
+**************
+20220113 SH
+Bilder in "da-1.0_titlePage_AUT.tex" geändert
+**************
+20220305 SH
+einseitiger Druck
+doppelseitiger Druck
+Einstellungen im Dokumentbeginn in:
+ da-2_main.tex
+ da-1_intro.tex
+ da-3_appendix.tex
+
+"Projektpartner" und "Supervisor Three"für Titelseite hinzugefügt in
+ da-defines.tex
+ da-1.0_titlePage.tex
+**************
+20220306 SH
+arabische Numerierung beginnt nach Inhaltsverzeichnis
+**************
+20220308 SH
+Dokumentstruktur an Leitfaden angepasst
+"LeitfadenDiplomarbeitenInformatik_190215.pdf"
+Anhang mit "\usepackage[titletoc]{appendix}"
+Paket \usepackage{csquotes}" ergänzt (wegen vorheriger Warnmeldung)
+**************
+22221208 SH
+Textinhalte angepasst
